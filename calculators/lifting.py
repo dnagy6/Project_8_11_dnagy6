@@ -17,6 +17,16 @@ class LiftingCalculator:
             "Week 4 (Deload)": (0.50, "10-12 reps")
         }
     
+    def estimate_1rm(self, weight, reps):
+        """
+        Estimates a d1RM using the Epley formula: 1RM = weight * (1 + reps / 30). Doing a true 1RM
+        test can be risky, so this would provide more flexibility for the coach determining working
+        weights for the athlete.
+        """
+        if reps == 1:
+            return float(weight)
+        return round(weight * (1 + reps / 30), 2)
+    
     def calculate_block(self, max_weight):
        
         """
