@@ -52,7 +52,26 @@ def main():
                 print("Invalid input. Please enter numeric values for weight and reps.")
 
         elif choice == '2':
-        
+            try:
+                distance = float(input("Enter the total distance of your run (in miles): "))
+                time_mins = float(input("Enter your total time for the run (in minutes): "))
+                
+                
+                pace_data = pace_calc.calculate_pace(distance, time_mins)
+                print(f"\nYour baseline pace is: {pace_data['formatted']} / mile")
+                
+                
+                predictions = pace_calc.predict_race_times(pace_data['decimal'])
+                print("\n--- Estimated Race Finish Times ---")
+                
+                for race, data in predictions.items():
+                    if data['hours'] > 0:
+                        print(f"{race} ({data['miles']} mi): {data['hours']}h {data['minutes']:02d}m {data['seconds']:02d}s")
+                    else:
+                        print(f"{race} ({data['miles']} mi): {data['minutes']}m {data['seconds']:02d}s")
+                        
+            except ValueError:
+                print("Invalid input. Please enter numeric values.")
 
         elif choice == '3':
         
