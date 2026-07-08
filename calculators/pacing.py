@@ -20,10 +20,17 @@ class PacingCalculator:
         """
         pace_decimal = time_minutes / distance
         
-        # Convert decimal pace to minutes and seconds
-        pace_mins = int(pace_decimal)
-        pace_secs = int((pace_decimal - pace_mins) * 60)
         
+        pace_mins = int(pace_decimal)
+        
+        
+        pace_secs = round((pace_decimal - pace_mins) * 60)
+        
+       
+        if pace_secs == 60:
+            pace_mins += 1
+            pace_secs = 0
+            
         return {
             "decimal": pace_decimal,
             "formatted": f"{pace_mins}:{pace_secs:02d}"
