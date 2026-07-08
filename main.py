@@ -37,12 +37,12 @@ def main():
                 reps = int(input("Enter reps completed (Type 1 if this was a true max): "))
                 
                 
-                estimated_max = lift_calc.estimate_1rm(weight, reps)
+                estimated_max = lifting_calc.estimate_1rm(weight, reps)
                 user_maxes[lift_name] = estimated_max
                 storage.save_data(user_maxes)
 
                 
-                block = lift_calc.calculate_block(estimated_max)
+                block = lifting_calc.calculate_block(estimated_max)
                 print(f"\n--- 4-Week Training Block for {estimated_max} lbs ---")
                 
                 for week, data in block.items():
@@ -57,11 +57,11 @@ def main():
                 time_mins = float(input("Enter your total time for the run (in minutes): "))
                 
                 
-                pace_data = pace_calc.calculate_pace(distance, time_mins)
+                pace_data = pacing_calc.calculate_pace(distance, time_mins)
                 print(f"\nYour baseline pace is: {pace_data['formatted']} / mile")
                 
                 
-                predictions = pace_calc.predict_race_times(pace_data['decimal'])
+                predictions = pacing_calc.predict_race_times(pace_data['decimal'])
                 print("\n--- Estimated Race Finish Times ---")
                 
                 for race, data in predictions.items():
@@ -74,7 +74,12 @@ def main():
                 print("Invalid input. Please enter numeric values.")
 
         elif choice == '3':
-        
+            if user_maxes:
+                print("\n--- Stored Maxes ---")
+                for lift, max_weight in user_maxes.items():
+                    print(f"{lift}: {max_weight} lbs")
+            else:
+                print("No maxes stored yet. Use the Lifting Calculator to add your maxes.")
 
         elif choice == '4':
             print(f"\n[Session maxes stored: {user_maxes}]")
