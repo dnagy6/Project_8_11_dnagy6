@@ -31,7 +31,25 @@ def main():
         choice = input("Enter your choice (1, 2, 3, or 4): ")
 
         if choice == '1':
-        
+            try:
+                lift_name = input("Enter the lift name (e.g., Squat, Bench Press): ").title()
+                weight = float(input("Enter the weight lifted (in lbs): "))
+                reps = int(input("Enter reps completed (Type 1 if this was a true max): "))
+                
+                
+                estimated_max = lift_calc.estimate_1rm(weight, reps)
+                user_maxes[lift_name] = estimated_max
+                storage.save_data(user_maxes)
+
+                
+                block = lift_calc.calculate_block(estimated_max)
+                print(f"\n--- 4-Week Training Block for {estimated_max} lbs ---")
+                
+                for week, data in block.items():
+                    print(f"{week}: {data['weight']} lbs | Target: {data['target']}")
+                    
+            except ValueError:
+                print("Invalid input. Please enter numeric values for weight and reps.")
 
         elif choice == '2':
         
