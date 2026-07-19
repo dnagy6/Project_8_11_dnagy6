@@ -7,9 +7,7 @@
 
 ## Project Overview
 
-The **Hybrid Training & Pace Calculator V2** is a terminal-based utility designed to calculate barbell percentages for strength training and endurance pacing splits. This project serves as a comprehensive refactor of a monolithic Python script into a fully modular, object-oriented software architecture. 
-
-Designed by an Orangetheory Fitness coach and Pre-ISE student at The Ohio State University, this tool brings physiological precision and software engineering best practices together.
+The **Hybrid Training & Pace Calculator V2** is a terminal-based utility designed to calculate barbell percentages for strength training and endurance pacing splits. This project serves as a comprehensive refactor of a Python script into a fully modular, object-oriented software architecture.
 
 ## Core Features 
 
